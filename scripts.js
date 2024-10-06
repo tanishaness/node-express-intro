@@ -37,9 +37,9 @@ app.get('/profile', function (req, res) {
 });
 
 //example
-    app.get("/error", function (req, res) {
-        throw Error("420") //finds errorHandeller and executes it
-    });
+app.get("/error", function (req, res) {
+    throw Error("420") //finds errorHandeller and executes it
+});
 
 // Catch-all route for handling invalid URLs
 app.use(function (req, res, next) {
@@ -72,7 +72,7 @@ app.use(function errorHandler(err, req, res, next) {
     if (res.headersSent) {
         return next(err);
     }
-    
+
     res.status(500);
     res.render('error', { error: err.message || "500: Internal Server Error" }); // Render error.ejs for 500 errors
 });
